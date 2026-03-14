@@ -806,7 +806,7 @@ export default function App(){
 
   // Backend health check
   useEffect(()=>{
-    fetch("http://localhost:5000/health").then(r=>r.ok?setBackendOk(true):setBackendOk(false)).catch(()=>setBackendOk(false));
+    fetch("https://signal-command-pro-1.onrender.com/health").then(r=>r.ok?setBackendOk(true):setBackendOk(false)).catch(()=>setBackendOk(false));
   },[]);
 
   // Live updates every 5s
@@ -841,7 +841,7 @@ export default function App(){
   const runPredict=async()=>{
     setLoading(true);
     try{
-      const res=await fetch("http://localhost:5000/predict",{
+      const res=await fetch("https://signal-command-pro-1.onrender.com/predict",{
         method:"POST",headers:{"Content-Type":"application/json"},
         body:JSON.stringify({hour:pHour,minute:0,dow:now.getDay()||1,cars:pCars,bikes:pBikes,buses:pBuses,trucks:pTrucks})
       });
